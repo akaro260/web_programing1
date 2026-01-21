@@ -1,4 +1,9 @@
 <?php
+$total_semua = 0;
+$total_nasi = 0;
+$total_mie = 0;
+$total_bakso = 0;
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nasi = $_POST['nasi_goreng'];
@@ -60,17 +65,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                     
             </form>
-        <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') { ?>
+        <?php if ($_total_semua !== null): ?>
             <div class="card-body border-top">
                  <h6>Struk Pembelian</h6>
                     <p>
-                     Nasi Goreng: <?= $nasi ?> x 12.000 = Rp.<?= number_format($total_nasi, 0, '.', '.')?><br>
-                     Mie Ayam: <?= $mie ?> x 10.000 = Rp.<?= number_format($total_mie, 0, '.', '.')?><br>
-                     Bakso: <?= $bakso ?> x 15.000 = Rp.<?= number_format($total_bakso, 0, '.', '.')?><br>
-                        <strong>Total Bayar: Rp.<?= number_format($total_semua, 0, '.', '.') ?></strong>
+                     Nasi Goreng: <?= $nasi ?> x 12.000 = Rp. <?= number_format($total_nasi, 0, '.', '.')?><br>
+                     Mie Ayam: <?= $mie ?> x 10.000 = Rp. <?= number_format($total_mie, 0, '.', '.')?><br>
+                     Bakso: <?= $bakso ?> x 15.000 = Rp. <?= number_format($total_bakso, 0, '.', '.')?><br>
+                        <strong>Total Bayar: Rp. <?= number_format($total_semua, 0, '.', '.') ?></strong>
                     </p>
             </div>
-            <?php } ?>
+            <?php endif; ?>
+
+
 
           </div>
         </div>
