@@ -1,27 +1,27 @@
 <?php
-$total_semua = 0;
-$total_nasi = 0;
-$total_mie = 0;
-$total_bakso = 0;
+function ambilinput($name){
+    return isset($_POST[$name]) ? $_POST[$name] : 0;
+}
 
+function hitungtotal($jumlah, $harga){
+    return $jumlah * $harga;
+}
+
+$nasi = $mie = $bakso = 0;
+$total_nasi = $total_mie = $total_bakso = 0;
+$total_semua = 0;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nasi = $_POST['nasi_goreng'];
-    $mie  = $_POST['mie_ayam'];
-    $bakso = $_POST['bakso'];
+    $nasi  = ambilinput('nasi_goreng');
+    $mie   = ambilinput('mie_ayam');
+    $bakso = ambilinput('bakso');
 
-    $harga_nasi = 12000;
-    $harga_mie = 10000;
-    $harga_bakso = 15000;
-
-    $total_nasi = $nasi * $harga_nasi;
-    $total_mie = $mie * $harga_mie;
-    $total_bakso = $bakso * $harga_bakso;
+    $total_nasi  = hitungtotal($nasi, 12000);
+    $total_mie   = hitungtotal($mie, 10000);
+    $total_bakso = hitungtotal($bakso, 15000);
 
     $total_semua = $total_nasi + $total_mie + $total_bakso;
 }
-
-
 ?>
 
 
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="card-body">
                     <div class="mb-3">
                     <label for="menu" class="form-label">Nasi goreng</label>
-                    <input type="number" class="form-control" id="jumlah" name="nasi_goreng" required>
+                    <input type="number" class="form-control" id="jumlah" name="nasi_goreng" >
                     </div>
                     <div class="mb-3">
                     <label for="menu" class="form-label">Mie Ayam</label>
